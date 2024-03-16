@@ -10,7 +10,8 @@
                         class="block border-2 border-[#FC9D68] bg-[#2F096E] text-white rounded-md w-full p-3 focus:outline-none focus:border-[#FC9D68] peer placeholder-transparent"
                         v-model="bodyLogin.userName" ref="emailInput" @focus="isFocused.email = true"
                         @blur="isFocused.email = false" />
-                    <label :class="{ 'translate-y-0 scale-100 peer-focus:bg-[#2F096E]': bodyLogin.userName === '' && !isFocused.email, '-translate-y-[1.45rem] scale-100 peer-focus:bg-[#2F096E]': bodyLogin.userName !== '' || isFocused.email }"
+                    <label
+                        :class="{ 'translate-y-0 scale-100 peer-focus:bg-[#2F096E]': bodyLogin.userName === '' && !isFocused.email, '-translate-y-[1.45rem] scale-100 peer-focus:bg-[#2F096E]': bodyLogin.userName !== '' || isFocused.email }"
                         class="absolute top-3 left-3 text-white px-2 transition-all transform origin-left  bg-[#2F096E]">
                         Email</label>
                 </div>
@@ -19,7 +20,8 @@
                         class="block border-2 border-[#FC9D68] bg-[#2F096E] text-white rounded-md w-full p-3 focus:outline-none focus:border-[#FC9D68] peer placeholder-transparent"
                         v-model="bodyLogin.password" ref="passwordInput" @focus="isFocused.password = true"
                         @blur="isFocused.password = false" />
-                    <label :class="{ 'translate-y-0 scale-100 peer-focus:bg-[#2F096E]': bodyLogin.password === '' && !isFocused.password, '-translate-y-[1.45rem] scale-100 peer-focus:bg-[#2F096E]': bodyLogin.password !== '' || isFocused.password }"
+                    <label
+                        :class="{ 'translate-y-0 scale-100 peer-focus:bg-[#2F096E]': bodyLogin.password === '' && !isFocused.password, '-translate-y-[1.45rem] scale-100 peer-focus:bg-[#2F096E]': bodyLogin.password !== '' || isFocused.password }"
                         class="absolute top-3 left-3 text-white px-2 transition-all transform origin-left  bg-[#2F096E]">
                         Contraseña</label>
                 </div>
