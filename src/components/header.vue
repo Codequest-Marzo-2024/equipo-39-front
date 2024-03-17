@@ -1,5 +1,6 @@
 <template>
-    <header class="h-fit w-full bg-[#401E79] shadow md:flex justify-between items-center px-8">
+    <header
+        class="h-fit w-full fixed top-0 z-50 bg-[#401E79] shadow md:flex justify-between items-center px-2 lg:px-5 xl:px-8 2xl:px-8 ">
         <img class="h-[4.5rem] w-auto" src="../assets/img/dt_logo.svg" alt="logo-Dt">
         <span @click="menuOpen()" class="absolute md:hidden right-6 top-5 cursor-pointer">
             <i>

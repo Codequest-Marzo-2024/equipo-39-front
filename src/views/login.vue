@@ -1,15 +1,16 @@
 <template>
     <main class="flex h-screen items-center justify-center">
         <section class="p-10 w-full max-w-md mb-12 z-50">
-            <img class=" h-[10rem] sm:h-[12rem] xl:h-[15rem] 2xl:h-[15rem] w-full mb-5 flex justify-center"
+            <img class="h-[10rem] sm:h-[12rem] xl:h-[15rem] 2xl:h-[15rem] w-full mb-5 flex justify-center"
                 src="../assets/img/dt_logo.svg" alt="logo-Dt">
-            <h1 class="text-center text-2xl font-bold mb-5 text-white">Iniciar Sesión</h1>
+            <h1 class="text-center text-2xl font-bold mb-5 text-white">
+                Iniciar Sesión
+            </h1>
             <form class="z-40 " action="#">
                 <myinput :type="'email'" :label="'Email'" v-model="bodyLogin.userName" />
                 <myinput :type="'password'" :label="'Contraseña'" v-model="bodyLogin.password" />
-                
                 <router-link class="w-full flex justify-center" to="/homeView">
-                    <myButton route="/nepe" text="Ingresar" />
+                    <myButton text="Ingresar" />
                 </router-link>
             </form>
         </section>
