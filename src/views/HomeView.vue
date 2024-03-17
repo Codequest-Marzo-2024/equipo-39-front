@@ -32,18 +32,12 @@
           Sus sorteos
         </h2>
       </div>
-      <!--  <button class="bg-[#FC9D68] rounded-full h-fit w-fit p-3" title="crear sorteo">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-          class="w-6 h-6 text-white">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-        </svg>
-      </button> -->
     </section>
     <section class="w-full h-full flex justify-center items-center relative z-30">
       <div class="gap-5 mb-5 p-2 h-full md:h-full xl:h-[90%] 2xl:h-[90%] w-full absolute overflow-auto max-w-md md:max-w-md lg:max-w-2xl xl:max-w-2xl 2xl:max-w-2xl
           grid grid-cols-1 md::grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2">
         <article v-for="sorteosCard in sorteos"
-          class="flex flex-col justify-between space-y-3 text-sm rounded-xl max-w-[26rem] w-full p-4 bg-white border-l-[0.3rem] border-l-[#FC9D68]">
+          class="flex flex-col justify-between cursor-pointer space-y-3 text-sm rounded-xl max-w-[26rem] w-full p-4 bg-white border-l-[0.3rem] border-l-[#FC9D68]">
           <header class="flex items-center justify-between font-bold">
             <span class="uppercase text-xs text-[#401E79]">{{ sorteosCard.id }}</span>
             <span class="text-xs text-[#401E79]">{{ sorteosCard.fechaInicio }} - {{ sorteosCard.fechaFin }}</span>
