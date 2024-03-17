@@ -4,6 +4,7 @@ import login from '../views/login.vue';
 import homeView from '../views/HomeView.vue';
 import chooseView from '../views/ChooseView.vue';
 import registerView from '../views/RegisterView.vue';
+import CreateView from '../views/CreateView.vue';
 
 const routes: RouteRecordRaw[] = [
     {
@@ -25,6 +26,11 @@ const routes: RouteRecordRaw[] = [
         path: '/registerView',
         name: 'registerView',
         component: registerView
+    },
+    {
+        path: '/CreateView',
+        name: 'CreateView',
+        component: CreateView
     },
 ];
 

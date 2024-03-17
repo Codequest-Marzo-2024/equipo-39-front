@@ -1,0 +1,16 @@
+@resource=discord-api
+
+
+### SEARCH MEMBERS
+GET {{hostname}}/{{resource}}/guild/1203325975706992672/search-members/ca HTTP/1.1
+content-type: application/json
+
+
+### SEARCH MEMBER BY ID
+GET {{hostname}}/{{resource}}/guild/1203325975706992672/search-member/723961700100997140 HTTP/1.1
+content-type: application/json
+
+
+### GET USER BY ID
+GET {{hostname}}/{{resource}}/user-by-id/723961700100997140 HTTP/1.1
+content-type: application/json
