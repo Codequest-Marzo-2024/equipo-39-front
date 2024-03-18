@@ -55,15 +55,23 @@ const useRaffle = () => {
     }
   };
 
-  const shareUrlInClipboard = () => {
+const shareUrlInClipboard = async () => {
     let urlToShare = !raffleDetail.value?.url
       ? 'No URL'
       : raffleDetail.value.url;
 
-    navigator.clipboard.writeText(urlToShare);
-
-    // TODO: Show a toast message
-  };
+    try {
+      const { state } = await navigator.permissions.query({ name: 'clipboard-write' as PermissionName });
+      if (state === 'granted' || state === 'prompt') {
+        await navigator.clipboard.writeText(urlToShare);
+        // TODO: Show a toast message
+      } else {
+        console.error('Permission to write to clipboard was denied');
+      }
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+};
 
   return {
     // state
