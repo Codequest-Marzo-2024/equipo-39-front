@@ -12,12 +12,18 @@
       </h1>
 
       <form class="z-40" @submit.prevent="onSubmit">
-        <myinput :type="'email'" :label="'Email'" v-model="loginForm.email" />
+        <myinput
+          :type="'email'"
+          :label="'Email'"
+          v-model="loginForm.email"
+          id="email"
+        />
 
         <myinput
           :type="'password'"
           :label="'Contraseña'"
           v-model="loginForm.password"
+          id="password"
         />
 
         <div class="w-full flex justify-center">

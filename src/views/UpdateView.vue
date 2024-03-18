@@ -10,6 +10,7 @@
           :type="'text'"
           :label="'Nombre'"
           v-model="raffleUpdateDto.name"
+          id="name"
         />
         <textarea
           placeholder="Descripcion"
@@ -25,11 +26,13 @@
             :type="'date'"
             :label="'Fecha inicio'"
             v-model="raffleUpdateDto.initialDate"
+            id="initialDate"
           />
           <myinput
             :type="'date'"
             :label="'Fecha fin'"
             v-model="raffleUpdateDto.finalDate"
+            id="finalDate"
           />
         </div>
         <div class="w-full flex justify-center">

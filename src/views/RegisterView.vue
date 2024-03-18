@@ -20,11 +20,13 @@
           :type="'text'"
           :label="'Nombre de usuario'"
           v-model="participantRegisterDto.username"
+          id="username"
         />
         <myinput
           :type="'text'"
           :label="'Discord Id'"
           v-model="participantRegisterDto.idPlatform"
+          id="idPlatform"
         />
         <div class="w-full flex justify-center">
           <myButton :type="'submit'" :text="'Registrarse'" />

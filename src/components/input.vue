@@ -1,9 +1,9 @@
 <template>
     <div class="relative mb-5 w-full">
-        <input :type="inputType"
+        <input :type="inputType" :id="id" name="floating_label"
             class="block border-2 border-[#FC9D68] bg-[#2F096E] text-white rounded-md w-full p-3 focus:outline-none focus:border-[#FC9D68] peer placeholder-transparent"
             v-model="value" ref="inputRef" @focus="handleFocus" @blur="handleBlur" />
-        <label for="floating_label"
+        <label :for="id"
             :class="{ 'translate-y-0 scale-100 peer-focus:bg-[#2F096E]': value === '' && !isFocused, '-translate-y-[1.45rem] scale-100 peer-focus:bg-[#2F096E]': value !== '' || isFocused }"
             class="absolute top-3 left-3 text-white px-2 transition-all transform origin-left bg-[#2F096E] w-fit pointer-events-none">
             {{ label }}
@@ -15,6 +15,7 @@
 import { ref, watchEffect, defineProps, defineEmits } from 'vue';
 
 const props = defineProps({
+    id: String,
     type: {
         type: String,
         default: 'text',
