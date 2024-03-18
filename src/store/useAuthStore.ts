@@ -42,6 +42,10 @@ export const useAuthStore = defineStore('AuthStore', () => {
     user.value = structuredClone(initialData.user);
   };
 
+  const resetLoginForm = () => {
+    loginForm.value = structuredClone(initialData.loginForm);
+  }
+
   return {
     // state
     rememberMe,
@@ -53,5 +57,6 @@ export const useAuthStore = defineStore('AuthStore', () => {
     // actions
     checkUserJwt,
     resetUser,
+    resetLoginForm,
   };
 });
