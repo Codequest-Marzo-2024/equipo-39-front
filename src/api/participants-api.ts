@@ -1,8 +1,10 @@
-import api from 'src/common/utils/axios-global';
-import { ParticipantRegisterDto } from 'src/interfaces/participant.interface';
+import api from '../common/utils/axios-global';
+import { ParticipantList, ParticipantRegisterDto } from '../interfaces/participant.interface';
 
 export const getParticipants = async (raffleId: number) => {
-  const response = await api.get<any[]>(`/raffles/${raffleId}/participants`);
+  const response = await api.get<ParticipantList[]>(
+    `/raffles/${raffleId}/participants`
+  );
   return response.data;
 };
 
