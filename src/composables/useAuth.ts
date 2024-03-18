@@ -2,13 +2,15 @@ import { storeToRefs } from 'pinia';
 import { useAuthStore } from '../store/useAuthStore';
 import { signIn } from '../api/auth-api';
 import { LoginForm } from '../interfaces/auth.interface';
+import { useRouter } from 'vue-router';
 
 const useAuth = () => {
+  const router = useRouter();
   const authStore = useAuthStore();
   const { user, loginForm, rememberMe } = storeToRefs(authStore);
 
   const setLoginFormToLocalStore = (loginForm: LoginForm) => {
-    localStorage.set('loginForm', loginForm);
+    localStorage.setItem('loginForm', JSON.stringify(loginForm));
   };
 
   const getJwtFromLocalStore = () => {
@@ -16,7 +18,7 @@ const useAuth = () => {
   };
 
   const setJwtToLocalStore = (jwt: string) => {
-    localStorage.set('jwt', jwt);
+    localStorage.setItem('jwt', jwt);
   };
 
   const login = async () => {
@@ -27,8 +29,12 @@ const useAuth = () => {
         setLoginFormToLocalStore({ ...loginForm.value, password: '' });
       }
 
+      console.log('data', data);
       setJwtToLocalStore(data.jwt);
-    } catch (error) {}
+      await router.push({ name: 'homeView' });
+    } catch (error) {
+      console.log('error', error);
+    }
   };
 
   const logout = () => {

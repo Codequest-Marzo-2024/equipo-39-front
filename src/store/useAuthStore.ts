@@ -27,12 +27,12 @@ export const useAuthStore = defineStore('AuthStore', () => {
     try {
       const authUser = await validateJwt();
       user.value = authUser;
-      localStorage.set('jwt', authUser.jwt);
+      localStorage.setItem('jwt', authUser.jwt);
       return true;
     } catch (error) {
-      localStorage.remove('jwt');
-      localStorage.remove('tenant');
-      localStorage.remove('apiKey');
+      localStorage.removeItem('jwt');
+      localStorage.removeItem('tenant');
+      localStorage.removeItem('apiKey');
       return false;
     }
   };
