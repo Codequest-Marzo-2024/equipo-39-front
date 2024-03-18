@@ -1,7 +1,7 @@
 import { NavigationGuard } from 'vue-router';
 import { useAuthStore } from '../../store/useAuthStore';
 
-const isAuthenticatedGuard: NavigationGuard = async (to, from, next) => {
+const isAuthenticatedGuard: NavigationGuard = async (_to, _from, next) => {
   const authStore = useAuthStore();
 
   const isAuthenticated = await authStore.checkUserJwt();
