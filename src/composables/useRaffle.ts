@@ -1,4 +1,5 @@
 import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
 
 import {
   createRaffle,
@@ -72,6 +73,11 @@ const useRaffle = () => {
     raffleUpdateDto,
 
     // getters
+    winnersName: computed(() => {
+      return raffleDetail.value.Winner?.map(
+        (winner) => winner.Participant.username
+      ) || [];
+    }),
 
     // actions
     findRaffles,

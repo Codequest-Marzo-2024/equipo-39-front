@@ -26,16 +26,21 @@ const initialData = {
     finalDate: '',
     createdAt: '',
     updatedAt: '',
-    madeBy: '',
-    User: {},
+    madeBy: 0,
+    User: {
+      id: 0,
+      email: '',
+    },
     Winner: [],
-    _count: 0,
+    _count: { Participant: 0 },
   },
 };
 
 export const useRaffleStore = defineStore('RaffleStore', () => {
   const raffleList = ref<RaffleList[]>([]);
-  const raffleDetail = ref<RaffleDetail>();
+  const raffleDetail = ref<RaffleDetail>(
+    structuredClone(initialData.raffleDetail)
+  );
   const raffleCreateDto = ref<RaffleCreateDto>(
     structuredClone(initialData.raffleCreateDto)
   );

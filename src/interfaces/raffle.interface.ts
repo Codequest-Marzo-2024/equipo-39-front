@@ -1,3 +1,4 @@
+import { Participant } from './participant.interface';
 export interface RaffleCreateDto {
   name: string;
   description: string;
@@ -6,9 +7,7 @@ export interface RaffleCreateDto {
   finalDate: string;
 }
 
-
 export interface RaffleUpdateDto extends Partial<RaffleCreateDto> {}
-
 
 export interface RaffleList {
   id: number;
@@ -36,7 +35,6 @@ export interface Count {
   Participant: number;
 }
 
-
 export interface RaffleDetail {
   id: number;
   code: string;
@@ -62,5 +60,6 @@ export interface Winner {
   updatedAt: Date;
   raffleId: number;
   participantId: number;
+  Participant: Participant;
 }
 
