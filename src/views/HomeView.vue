@@ -1,9 +1,7 @@
 <template>
   <myHeader />
-  <main v-if="!mainChange === false" class="flex flex-col h-screen">
-    <section class="h-fit w-full p-6 mt-[4.5rem]">
-      <h1 class="text-white font-semibold text-lg md:text-lg xl:text-xl 2xl:text-xl">Bienvenido, ${USUARIO_NOMBRE}</h1>
-    </section>
+  <main v-if="!raffleList.length" class="flex flex-col h-screen">
+    <welcome :title="'Sin sorteos disponibles'" />
     <section class="w-full h-full flex justify-center items-center z-30">
       <div class="p-10 h-full w-full max-w-md md:max-w-md lg:max-w-2xl xl:max-w-2xl
         2xl:max-w-2xl flex flex-col justify-center items-center">
@@ -18,7 +16,9 @@
         <h2 class="text-center text-xl md:text-xl xl:text-3xl 2xl:text-3xl font-semibold mb-5 text-white">
           No hay ningun sorteo disponible
         </h2>
-        <myButton text="Crear Sorteo" />
+        <router-link class="w-full h-auto flex justify-center" to="/raffle/create">
+          <myButton text="Crear Sorteo" />
+        </router-link>
       </div>
     </section>
   </main>
@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 import { useRouter } from 'vue-router';
 
 import myHeader from '../components/header.vue'
@@ -63,8 +63,6 @@ import myButton from '../components/button.vue'
 import useRaffle from '../composables/useRaffle';
 import useDates from '../common/composables/useDates';
 import welcome from '../components/welcome.vue';
-
-const mainChange = ref(false);
 
 const {
   raffleList,

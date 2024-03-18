@@ -1,19 +1,17 @@
 <template>
     <myHeader />
-    <section class="h-fit w-full p-6 mt-[4.5rem]">
-        <h1 class="text-white font-semibold text-lg md:text-lg xl:text-xl 2xl:text-xl">
-            Nuevo Sorteo
-        </h1>
+    <section class="h-fit w-full">
+        <welcome :title="'Crear tu sorteo'" />
     </section>
-    <main class="flex items-start justify-center">
-        <section class="p-10 w-full max-w-md mb-12 z-50">
-            <form class="z-40 " @submit.prevent="onSubmit()">
+    <main class="flex items-start justify-center p-5">
+        <section class="p-10 w-full max-w-md z-40">
+            <form @submit.prevent="onSubmit()">
                 <myinput :type="'text'" :label="'Nombre'" v-model="raffleCreateDto.name" />
                 <textarea placeholder="Descripcion"
                     class="block border-2 my-5 p-1 resize-none border-[#FC9D68] bg-[#2F096E] text-white rounded-md w-full focus:outline-none focus:border-[#FC9D68]"
                     rows="5" v-model="raffleCreateDto.description">
                 </textarea>
-                <div class="inline-flex w-full gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 w-full gap-3">
                     <myinput :type="'date'" :label="'Fecha inicio'" v-model="raffleCreateDto.initialDate" />
                     <myinput :type="'date'" :label="'Fecha fin'" v-model="raffleCreateDto.finalDate" />
                 </div>
@@ -37,6 +35,7 @@ import myButton from '../components/button.vue'
 import myinput from '../components/input.vue';
 import myHeader from '../components/header.vue'
 import useRaffle from '../composables/useRaffle';
+import welcome from '../components/welcome.vue';
 
 const router = useRouter();
 const { create, raffleCreateDto, resetRaffleCreateDto } = useRaffle();
