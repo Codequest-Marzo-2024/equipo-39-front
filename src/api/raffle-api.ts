@@ -2,6 +2,7 @@ import api from '../common/utils/axios-global';
 import {
   RaffleCreateDto,
   RaffleDetail,
+  RaffleDetailShort,
   RaffleList,
   RaffleUpdateDto,
 } from '../interfaces/raffle.interface';
@@ -27,7 +28,7 @@ export const getRaffleById = async (id: number) => {
 };
 
 export const getRaffleByUUID = async (uuid: string) => {
-  const response = await api.get<RaffleDetail>(`/raffles/${uuid}/uuid`);
+  const response = await api.get<RaffleDetailShort>(`/raffles/${uuid}/uuid`);
   return response.data;
 };
 

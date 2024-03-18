@@ -4,6 +4,7 @@ import { computed } from 'vue';
 import {
   createRaffle,
   getRaffleById,
+  getRaffleByUUID,
   getRaffles,
   updateRaffle,
 } from '../api/raffle-api';
@@ -15,8 +16,13 @@ import {
 
 const useRaffle = () => {
   const raffleStore = useRaffleStore();
-  const { raffleCreateDto, raffleDetail, raffleList, raffleUpdateDto } =
-    storeToRefs(raffleStore);
+  const {
+    raffleCreateDto,
+    raffleDetail,
+    raffleList,
+    raffleUpdateDto,
+    raffletShort,
+  } = storeToRefs(raffleStore);
 
   const findRaffles = async () => {
     try {
@@ -37,8 +43,22 @@ const useRaffle = () => {
     }
   };
 
+  const findRaffleByUUID = async (uuid: string) => {
+    try {
+      const data = await getRaffleByUUID(uuid);
+      raffletShort.value = data;
+    } catch (error) {
+      throw new Error('Error getting raffle');
+      // TODO: Show a toast message
+    }
+  };
+
   const create = async (body: RaffleCreateDto) => {
     try {
+      body.initialDate =
+        new Date(body.initialDate).toISOString().split('T')[0] + 'T00:00:00';
+      body.finalDate =
+        new Date(body.finalDate).toISOString().split('T')[0] + 'T23:59:59';
       await createRaffle(body);
     } catch (error) {
       throw new Error('Error creating raffle');
@@ -55,13 +75,15 @@ const useRaffle = () => {
     }
   };
 
-const shareUrlInClipboard = async () => {
+  const shareUrlInClipboard = async () => {
     let urlToShare = !raffleDetail.value?.url
       ? 'No URL'
       : raffleDetail.value.url;
 
     try {
-      const { state } = await navigator.permissions.query({ name: 'clipboard-write' as PermissionName });
+      const { state } = await navigator.permissions.query({
+        name: 'clipboard-write' as PermissionName,
+      });
       if (state === 'granted' || state === 'prompt') {
         await navigator.clipboard.writeText(urlToShare);
         // TODO: Show a toast message
@@ -71,7 +93,7 @@ const shareUrlInClipboard = async () => {
     } catch (err) {
       console.error('Failed to copy text: ', err);
     }
-};
+  };
 
   return {
     // state
@@ -79,17 +101,21 @@ const shareUrlInClipboard = async () => {
     raffleDetail,
     raffleList,
     raffleUpdateDto,
+    raffletShort,
 
     // getters
     winnersName: computed(() => {
-      return raffleDetail.value.Winner?.map(
-        (winner) => winner.Participant.username
-      ) || [];
+      return (
+        raffleDetail.value.Winner?.map(
+          (winner) => winner.Participant.username
+        ) || []
+      );
     }),
 
     // actions
     findRaffles,
     findOneRaffle,
+    findRaffleByUUID,
     create,
     update,
     resetRaffleCreateDto: raffleStore.resetRaffleCreateDto,

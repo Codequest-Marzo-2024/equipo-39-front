@@ -1,5 +1,6 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
+
 import { AuthUser } from '../interfaces/auth.interface';
 import { validateJwt } from '../api/auth-api';
 

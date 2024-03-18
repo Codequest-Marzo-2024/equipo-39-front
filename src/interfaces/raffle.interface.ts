@@ -53,6 +53,14 @@ export interface RaffleDetail {
   _count: Count;
 }
 
+export interface RaffleDetailShort {
+  initialDate: string;
+  finalDate: string;
+  name: string;
+  description: string;
+  isActive: boolean;
+}
+
 export interface Winner {
   id: number;
   isActive: boolean;
@@ -62,4 +70,3 @@ export interface Winner {
   participantId: number;
   Participant: Participant;
 }
-

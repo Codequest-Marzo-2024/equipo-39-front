@@ -1,18 +1,27 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
+
 import {
   RaffleCreateDto,
   RaffleDetail,
+  RaffleDetailShort,
   RaffleList,
-} from 'src/interfaces/raffle.interface';
+} from '../interfaces/raffle.interface';
 
 const initialData = {
   raffleCreateDto: {
     name: '',
     description: '',
     url: '',
+    initialDate: new Date().toISOString().split('T')[0],
+    finalDate: new Date().toISOString().split('T')[0],
+  },
+  raffletShort: {
     initialDate: '',
     finalDate: '',
+    name: '',
+    description: '',
+    isActive: true,
   },
   raffleDetail: {
     id: 0,
@@ -41,6 +50,9 @@ export const useRaffleStore = defineStore('RaffleStore', () => {
   const raffleDetail = ref<RaffleDetail>(
     structuredClone(initialData.raffleDetail)
   );
+  const raffletShort = ref<RaffleDetailShort>(
+    structuredClone(initialData.raffletShort)
+  );
   const raffleCreateDto = ref<RaffleCreateDto>(
     structuredClone(initialData.raffleCreateDto)
   );
@@ -56,6 +68,7 @@ export const useRaffleStore = defineStore('RaffleStore', () => {
     // state
     raffleList,
     raffleDetail,
+    raffletShort,
     raffleCreateDto,
     raffleUpdateDto,
 

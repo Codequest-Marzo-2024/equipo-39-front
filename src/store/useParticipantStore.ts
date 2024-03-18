@@ -1,5 +1,6 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
+
 import {
   ParticipantList,
   ParticipantRegisterDto,
@@ -14,8 +15,8 @@ const initialData = {
 };
 
 export const useParticipantStore = defineStore('ParticipantStore', () => {
-  const participantList = ref<ParticipantList[]>([]);
   const winnerList = ref<WinnerList[]>([]);
+  const participantList = ref<ParticipantList[]>([]);
   const participantRegisterDto = ref<ParticipantRegisterDto>(
     structuredClone(initialData.participantRegisterDto)
   );
@@ -28,9 +29,9 @@ export const useParticipantStore = defineStore('ParticipantStore', () => {
 
   return {
     // state
+    winnerList,
     participantList,
     participantRegisterDto,
-    winnerList,
 
     // getters
 

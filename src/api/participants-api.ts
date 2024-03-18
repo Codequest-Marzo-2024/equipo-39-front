@@ -1,5 +1,9 @@
 import api from '../common/utils/axios-global';
-import { ParticipantList, ParticipantRegisterDto } from '../interfaces/participant.interface';
+import {
+  ParticipantList,
+  ParticipantRegisted,
+  ParticipantRegisterDto,
+} from '../interfaces/participant.interface';
 
 export const getParticipants = async (raffleId: number) => {
   const response = await api.get<ParticipantList[]>(
@@ -9,11 +13,11 @@ export const getParticipants = async (raffleId: number) => {
 };
 
 export const registerParticipant = async (
-  raffleId: number,
+  raffleUUID: string,
   body: ParticipantRegisterDto
 ) => {
-  const response = await api.post<any>(
-    `/raffles/${raffleId}/participant`,
+  const response = await api.post<ParticipantRegisted>(
+    `/raffles/${raffleUUID}/participant`,
     body
   );
   return response.data;

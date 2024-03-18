@@ -3,7 +3,6 @@ export interface ParticipantRegisterDto {
   idPlatform: string;
 }
 
-
 export interface ParticipantList {
   id: number;
   idPlatform: string;
@@ -14,12 +13,11 @@ export interface ParticipantList {
   raffleId: number;
 }
 
-
 export interface WinnerList {
   id: number;
   isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   raffleId: number;
   participantId: number;
   Participant: Participant;
@@ -28,4 +26,14 @@ export interface WinnerList {
 export interface Participant {
   id: number;
   username: string;
+}
+
+export interface ParticipantRegisted {
+  id: number;
+  idPlatform: string;
+  username: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+  raffleId: number;
 }

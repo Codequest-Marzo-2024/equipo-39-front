@@ -1,7 +1,8 @@
+import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
+
 import { getParticipants, registerParticipant } from '../api/participants-api';
 import { useParticipantStore } from '../store/useParticipantStore';
-import { computed } from 'vue';
 
 const useParticipants = () => {
   const participantStore = useParticipantStore();
@@ -17,11 +18,12 @@ const useParticipants = () => {
     }
   };
 
-  const registerParticipantInRaffle = async (raffleId: number) => {
+  const registerParticipantInRaffle = async (raffleUUID: string) => {
     try {
-      await registerParticipant(raffleId, participantRegisterDto.value);
-    } catch (error) {
-      console.error(error);
+      await registerParticipant(raffleUUID, participantRegisterDto.value);
+      return true;
+    } catch (error: any) {
+      throw new Error(error.response.data.message);
     }
   };
 
