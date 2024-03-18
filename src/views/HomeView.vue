@@ -1,6 +1,6 @@
 <template>
   <myHeader />
-  <main v-if="!raffleList.length" class="flex flex-col h-screen">
+  <main v-if="!raffleList.length && mainChange == true" class="flex flex-col h-screen">
     <welcome :title="'Sin sorteos disponibles'" />
     <section class="w-full h-full flex justify-center items-center z-30">
       <div class="p-10 h-full w-full max-w-md md:max-w-md lg:max-w-2xl xl:max-w-2xl
@@ -67,6 +67,7 @@ import welcome from '../components/welcome.vue';
 const {
   raffleList,
   findRaffles,
+  mainChange,
 } = useRaffle();
 
 const { formatDate } = useDates();
