@@ -1,5 +1,14 @@
 <template>
-  <main class="flex h-screen items-center justify-center">
+  <header
+    class="h-fit w-full fixed top-0 z-50 md:flex items-center px-2 lg:px-5 xl:px-8 2xl:px-8 py-5"
+  > 
+    <router-link to="/">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-[#FC9D68]">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+         </svg>
+    </router-link>
+  </header>
+  <main class="flex flex-col h-screen items-center justify-center">
     <article class="p-5 w-full lg:w-1/2 xl:w-1/2">
       <section
         class="w-full flex flex-col items-center justify-center z-50 bg-[#401E79] rounded-xl p-5 lg:p-10 xl:p-10"
