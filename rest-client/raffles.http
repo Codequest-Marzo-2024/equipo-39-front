@@ -1,4 +1,7 @@
 @resource = raffles
+@hostname = http://89.117.149.193:3380/api
+@jwt = eyJhbGci44JIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTcxMDcwMTUzNiwiZXhw34oxNzEwNzQ0NzM2fQ.Iv6aW40-YhAstpfusFrrBR9FZAJY84giPzcokSHaoO4
+
 
 ### GET ALL RAFFLES
 GET {{hostname}}/{{resource}} HTTP/1.1

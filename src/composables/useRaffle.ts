@@ -1,5 +1,6 @@
 import { storeToRefs } from 'pinia';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
+import Swal from 'sweetalert2';
 
 import {
   createRaffle,
@@ -24,10 +25,14 @@ const useRaffle = () => {
     raffletShort,
   } = storeToRefs(raffleStore);
 
+  const mainChange = ref(false); 
+
   const findRaffles = async () => {
     try {
+      mainChange.value = false;
       const data = await getRaffles();
       raffleList.value = data;
+      mainChange.value = true;
     } catch (error) {
       console.error(error);
     }
@@ -38,8 +43,12 @@ const useRaffle = () => {
       const data = await getRaffleById(id);
       raffleDetail.value = data;
     } catch (error) {
-      throw new Error('Error getting raffle');
-      // TODO: Show a toast message
+      Swal.fire({
+        title: 'Error interno en el servidor',
+        text: 'Error getting raffle',
+        icon: 'error',
+        confirmButtonText: 'Volver'
+      })
     }
   };
 
@@ -48,8 +57,12 @@ const useRaffle = () => {
       const data = await getRaffleByUUID(uuid);
       raffletShort.value = data;
     } catch (error) {
-      throw new Error('Error getting raffle');
-      // TODO: Show a toast message
+      Swal.fire({
+        title: 'Error interno en el servidor',
+        text: 'Error getting raffle',
+        icon: 'error',
+        confirmButtonText: 'Volver'
+      })
     }
   };
 
@@ -61,8 +74,12 @@ const useRaffle = () => {
         new Date(body.finalDate).toISOString().split('T')[0] + 'T23:59:59';
       await createRaffle(body);
     } catch (error) {
-      throw new Error('Error creating raffle');
-      // TODO: Show a toast message
+      Swal.fire({
+        title: 'Error interno en el servidor',
+        text: 'Error creating raffle',
+        icon: 'error',
+        confirmButtonText: 'Volver'
+      })
     }
   };
 
@@ -70,8 +87,12 @@ const useRaffle = () => {
     try {
       await updateRaffle(raffleId, body);
     } catch (error) {
-      throw new Error('Error updating raffle');
-      // TODO: Show a toast message
+      Swal.fire({
+        title: 'Error interno en el servidor',
+        text: 'Error updating raffle',
+        icon: 'error',
+        confirmButtonText: 'Volver'
+      })
     }
   };
 
@@ -86,12 +107,21 @@ const useRaffle = () => {
       });
       if (state === 'granted' || state === 'prompt') {
         await navigator.clipboard.writeText(urlToShare);
-        // TODO: Show a toast message
+        Swal.fire({
+          title: "Copiado Exitosamente",
+          icon: "success"
+        });
       } else {
         console.error('Permission to write to clipboard was denied');
       }
     } catch (err) {
       console.error('Failed to copy text: ', err);
+      Swal.fire({
+        title: 'Error',
+        text: 'No se puedo copiar correctamente',
+        icon: 'error',
+        confirmButtonText: 'Volver'
+      })
     }
   };
 
@@ -120,6 +150,7 @@ const useRaffle = () => {
     update,
     resetRaffleCreateDto: raffleStore.resetRaffleCreateDto,
     shareUrlInClipboard,
+    mainChange,
   };
 };
 

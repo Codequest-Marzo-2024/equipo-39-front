@@ -1,6 +1,7 @@
 import { storeToRefs } from 'pinia';
 import { useAuthStore } from '../store/useAuthStore';
 import { signIn } from '../api/auth-api';
+import Swal from 'sweetalert2';
 
 const useAuth = () => {
   const authStore = useAuthStore();
@@ -23,8 +24,12 @@ const useAuth = () => {
       setJwtToLocalStore(data.jwt);
     } catch (error) {
       console.log('error', error);
-      throw new Error('Invalid credentials');
-      // TODO: handle error
+      Swal.fire({
+        title: 'Error interno en el servidor',
+        text: 'Invalid credentials',
+        icon: 'error',
+        confirmButtonText: 'Volver',
+      })
     }
   };
 
