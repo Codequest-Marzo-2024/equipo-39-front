@@ -45,10 +45,10 @@ export interface RaffleDetail {
   url: string;
   isActive: boolean;
   isFinished: boolean;
-  initialDate: Date;
-  finalDate: Date;
-  createdAt: Date;
-  updatedAt: Date;
+  initialDate: string;
+  finalDate: string;
+  createdAt: string;
+  updatedAt: string;
   madeBy: number;
   User: User;
   Winner: Winner[];

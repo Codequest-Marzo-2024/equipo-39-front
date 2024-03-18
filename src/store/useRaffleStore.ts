@@ -14,6 +14,23 @@ const initialData = {
     initialDate: '',
     finalDate: '',
   },
+  raffleDetail: {
+    id: 0,
+    code: '',
+    name: '',
+    description: '',
+    url: '',
+    isActive: true,
+    isFinished: false,
+    initialDate: '',
+    finalDate: '',
+    createdAt: '',
+    updatedAt: '',
+    madeBy: '',
+    User: {},
+    Winner: [],
+    _count: 0,
+  },
 };
 
 export const useRaffleStore = defineStore('RaffleStore', () => {
