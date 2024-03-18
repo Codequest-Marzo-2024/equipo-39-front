@@ -18,7 +18,7 @@
                     <myinput :type="'date'" :label="'Fecha fin'" v-model="bodyCreate.userName" />
                 </div>
                 <myinput :type="'number'" :label="'Maximo de participantes (opcional)'" v-model="bodyCreate.userName" />
-                <router-link class="w-full flex justify-center" to="/homeView">
+                <router-link class="w-full flex justify-center" to="/">
                     <myButton text="Crear Sorteo" />
                 </router-link>
             </form>
