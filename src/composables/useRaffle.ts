@@ -1,6 +1,11 @@
 import { storeToRefs } from 'pinia';
 
-import { createRaffle, getRaffle, getRaffles, updateRaffle } from '../api/raffle-api';
+import {
+  createRaffle,
+  getRaffleById,
+  getRaffles,
+  updateRaffle,
+} from '../api/raffle-api';
 import { useRaffleStore } from '../store/useRaffleStore';
 import {
   RaffleCreateDto,
@@ -23,10 +28,11 @@ const useRaffle = () => {
 
   const findOneRaffle = async (id: number) => {
     try {
-      const data = await getRaffle(id);
+      const data = await getRaffleById(id);
       raffleDetail.value = data;
     } catch (error) {
-      console.error(error);
+      throw new Error('Error getting raffle');
+      // TODO: Show a toast message
     }
   };
 
@@ -34,8 +40,8 @@ const useRaffle = () => {
     try {
       await createRaffle(body);
     } catch (error) {
-      console.error(error);
       throw new Error('Error creating raffle');
+      // TODO: Show a toast message
     }
   };
 
@@ -43,8 +49,19 @@ const useRaffle = () => {
     try {
       await updateRaffle(body);
     } catch (error) {
-      console.error(error);
+      throw new Error('Error updating raffle');
+      // TODO: Show a toast message
     }
+  };
+
+  const shareUrlInClipboard = () => {
+    let urlToShare = !raffleDetail.value?.url
+      ? 'No URL'
+      : raffleDetail.value.url;
+
+    navigator.clipboard.writeText(urlToShare);
+
+    // TODO: Show a toast message
   };
 
   return {
@@ -56,13 +73,13 @@ const useRaffle = () => {
 
     // getters
 
-
     // actions
     findRaffles,
     findOneRaffle,
     create,
     update,
     resetRaffleCreateDto: raffleStore.resetRaffleCreateDto,
+    shareUrlInClipboard,
   };
 };
 
