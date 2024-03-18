@@ -1,0 +1,49 @@
+@resource = raffles
+
+### GET ALL RAFFLES
+GET {{hostname}}/{{resource}} HTTP/1.1
+Authorization: Bearer {{jwt}}
+
+### GET ONE RAFFLE
+GET {{hostname}}/{{resource}}/2 HTTP/1.1
+Authorization: Bearer {{jwt}}
+
+### CREATE RAFFLE
+POST {{hostname}}/{{resource}} HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+    "name": "Sorteo FINAL",
+    "description": "Este sera un gran sorteo por una MACBOOK",
+    "url": "https://www.raffle.com/sorteo-2",
+    "initialDate": "2024-03-18",
+    "finalDate": "2024-03-18"
+}
+
+### UPDATE RAFFLE
+PATCH  {{hostname}}/{{resource}}/6 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+    "name": "Sorteo 2",
+    "description": "Este sera UN 2do GRAN sorteo por una MacBook Pro M3",
+    "url": "https://www.raffle.com/sorteo-2",
+    "deadline": "2024-03-31"
+}
+
+### DELETE RAFFLE
+DELETE {{hostname}}/{{resource}}/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{jwt}}
+
+### DRAW
+GET {{hostname}}/{{resource}}/1/draw/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{jwt}}
+
+### GET WINNERS
+GET {{hostname}}/{{resource}}/1/winners HTTP/1.1
+Authorization: Bearer {{jwt}}
+

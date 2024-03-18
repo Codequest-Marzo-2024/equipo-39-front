@@ -1,25 +1,55 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-
-import login from '../views/login.vue';
-import homeView from '../views/HomeView.vue';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import isAuthenticatedGuard from './guards/isAuthenticatedGuard';
 
 const routes: RouteRecordRaw[] = [
-    {
-        path: '/',
+  {
+    path: '/auth',
+    name: 'auth',
+    children: [
+      {
+        path: 'login',
         name: 'login',
-        component: login
-    },
-    {
-        path: '/homeView',
+        component: () => import('../views/login.vue'),
+      },
+    ],
+  },
+  {
+    path: '/',
+    beforeEnter: [isAuthenticatedGuard],
+    redirect: { name: 'homeView' },
+    children: [
+      {
+        path: 'raffles',
         name: 'homeView',
-        component: homeView
-    },
+        component: () => import('../views/HomeView.vue'),
+      },
+      {
+        path: 'raffle/:raffleId/detail',
+        name: 'detailView',
+        component: () => import('../views/DetailView.vue'),
+      },
+      {
+        path: 'raffle/:raffleId/draw',
+        name: 'chooseView',
+        component: () => import('../views/ChooseView.vue'),
+      },
+      {
+        path: 'raffle/create',
+        name: 'CreateView',
+        component: () => import('../views/CreateView.vue'),
+      },
+    ],
+  },
+  {
+    path: '/raffle/:raffleUUID/register',
+    name: 'registerView',
+    component: () => import('../views/RegisterView.vue'),
+  },
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes
+  history: createWebHashHistory(),
+  routes,
 });
-
 
 export default router;

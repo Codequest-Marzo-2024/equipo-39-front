@@ -1,0 +1,25 @@
+@resource = auth
+@hostname = http://89.117.149.193:3380/api
+@jwt = eyJhbGci44JIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTcxMDcwMTUzNiwiZXhw34oxNzEwNzQ0NzM2fQ.Iv6aW40-YhAstpfusFrrBR9FZAJY84giPzcokSHaoO4
+
+### CHECK AUTH TOKEN
+GET {{hostname}}/{{resource}}/check-auth-token HTTP/1.1
+Authorization: Bearer {{jwt}}
+
+### LOGIN
+POST {{hostname}}/{{resource}}/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "admin@devtalles.com",
+    "password": "S3cr3t!00!mF4"
+}
+
+### REGISTER
+POST {{hostname}}/{{resource}}/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "user12@omninexo.com",
+    "password": "Abc123!"
+} 

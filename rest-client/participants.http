@@ -1,0 +1,22 @@
+@resource = raffles
+@hostname = http://89.117.149.193:3380/api
+@jwt = eyJhbGci44JIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTcxMDcwMTUzNiwiZXhw34oxNzEwNzQ0NzM2fQ.Iv6aW40-YhAstpfusFrrBR9FZAJY84giPzcokSHaoO4
+
+### GET ALL PARTICIPANTS
+GET {{hostname}}/{{resource}}/1/participants HTTP/1.1
+Authorization: Bearer {{jwt}}
+
+### REGISTER PARTICIPANT
+POST {{hostname}}/{{resource}}/1/participant HTTP/1.1
+content-type: application/json
+
+{
+    "username": "joelboada",
+    "idPlatform": "1205221952080584705"
+}
+
+### DELETE PARTICIPANT
+DELETE {{hostname}}/{{resource}}/1/participant/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{jwt}}
+
