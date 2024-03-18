@@ -11,8 +11,8 @@ const initialData = {
     jwt: '',
   },
   loginForm: {
-    email: 'admin@devtalles.com',
-    password: 'S3cr3t!00!',
+    email: '',
+    password: '',
   },
   rememberMe: false,
 };
