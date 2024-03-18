@@ -76,7 +76,9 @@
                 Compartir Sorteo
               </button>
             </div>
+
             <button
+              @click="goToUpdate()"
               class="bg-[#401E79] hover:bg-[#401E79] text-white w-full rounded-md flex justify-center items-center font-semibold p-2"
             >
               <svg
@@ -168,6 +170,10 @@ const { participantList, findParticipantsByRaffle } = useParticipants();
 
 findOneRaffle(+raffleId);
 findParticipantsByRaffle(+raffleId);
+
+const goToUpdate = () => {
+  router.push({ name: 'UpdateView', params: { raffleId } });
+};
 
 const goToChooseWinner = () => {
   router.push({ name: 'chooseView', params: { raffleId } });

@@ -29,14 +29,19 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../views/DetailView.vue'),
       },
       {
-        path: 'raffle/:raffleId/draw',
-        name: 'chooseView',
-        component: () => import('../views/ChooseView.vue'),
-      },
-      {
         path: 'raffle/create',
         name: 'CreateView',
         component: () => import('../views/CreateView.vue'),
+      },
+      {
+        path: 'raffle/:raffleId/update',
+        name: 'UpdateView',
+        component: () => import('../views/UpdateView.vue'),
+      },
+      {
+        path: 'raffle/:raffleId/draw',
+        name: 'chooseView',
+        component: () => import('../views/ChooseView.vue'),
       },
     ],
   },

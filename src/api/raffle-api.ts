@@ -12,8 +12,8 @@ export const createRaffle = async (body: RaffleCreateDto) => {
   return response.data;
 };
 
-export const updateRaffle = async (body: RaffleUpdateDto) => {
-  const response = await api.patch<any>('/raffles', body);
+export const updateRaffle = async (raffleId: number, body: RaffleUpdateDto) => {
+  const response = await api.patch<any>(`/raffles/${raffleId}`, body);
   return response.data;
 };
 

@@ -66,9 +66,9 @@ const useRaffle = () => {
     }
   };
 
-  const update = async (body: RaffleUpdateDto) => {
+  const update = async (raffleId: number, body: RaffleUpdateDto) => {
     try {
-      await updateRaffle(body);
+      await updateRaffle(raffleId, body);
     } catch (error) {
       throw new Error('Error updating raffle');
       // TODO: Show a toast message
