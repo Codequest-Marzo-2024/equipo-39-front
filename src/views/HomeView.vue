@@ -29,11 +29,11 @@
 
     <section class="w-full h-full flex justify-center items-center relative z-30">
       <div class="gap-5 mb-5 p-2 h-full md:h-full xl:h-[95%] 2xl:h-[95%] w-full absolute overflow-auto max-w-md md:max-w-md lg:max-w-2xl xl:max-w-2xl 2xl:max-w-2xl
-          grid grid-cols-1 md::grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2">
+          grid grid-cols-1 md::grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 place-content-start">
         <article v-for="raffle in raffleList" :key="raffle.id" @click="goToDetail(raffle.id)"
           class="flex flex-col justify-between cursor-pointer space-y-3 text-sm rounded-xl max-w-[26rem] h-fit w-full p-4 bg-white border-l-[0.3rem] border-l-[#FC9D68]">
           <header class="flex items-center justify-between font-bold">
-            <span class="uppercase text-xs text-[#401E79]">{{ raffle.id }}</span>
+            <span class="uppercase text-xs text-[#401E79]">{{ raffle._count.Participant || 0 }}</span>
             <span class="text-xs text-[#401E79]">
               {{ formatDate(raffle.initialDate) }} - {{ formatDate(raffle.finalDate) }}
             </span>

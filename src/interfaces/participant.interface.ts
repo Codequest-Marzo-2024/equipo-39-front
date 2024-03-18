@@ -13,3 +13,19 @@ export interface ParticipantList {
   updatedAt: string;
   raffleId: number;
 }
+
+
+export interface WinnerList {
+  id: number;
+  isActive: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  raffleId: number;
+  participantId: number;
+  Participant: Participant;
+}
+
+export interface Participant {
+  id: number;
+  username: string;
+}
