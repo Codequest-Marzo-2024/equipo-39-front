@@ -17,3 +17,10 @@ Desarrollar una aplicación web que proporcione a la comunidad de DevTalles una 
 2. Se debe contar con acceso al backend
 3. Reemplazar el contenido de la carpeta `public` del backend con el contenido de la carpeta `dist` de este proyecto
 
+## Para acceder a la Documentación de la API
+
+- https://codequest.kindnexx.com/api/doc
+
+## Para acceder al Frontend en Producción
+
+- https://codequest.kindnexx.com
