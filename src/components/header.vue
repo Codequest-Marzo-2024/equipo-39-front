@@ -31,7 +31,7 @@ let open = ref(false);
 
 let links = [
     { name: "Inicio", link: "/" },
-    { name: "Crear Concurso", link: "/" }
+    { name: "Crear Sorteo", link: "/raffle/create" }
 ]
 
 const menuOpen = () => {
