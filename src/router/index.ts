@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import isAuthenticatedGuard from './guards/isAuthenticatedGuard';
 
 const routes: RouteRecordRaw[] = [
@@ -41,14 +41,14 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
-    path: '/raffle/:raffleId/register',
+    path: '/raffle/:raffleUUID/register',
     name: 'registerView',
     component: () => import('../views/RegisterView.vue'),
   },
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
 
