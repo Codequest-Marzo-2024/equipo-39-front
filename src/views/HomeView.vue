@@ -33,7 +33,7 @@
         <article v-for="raffle in raffleList" :key="raffle.id" @click="goToDetail(raffle.id)"
           class="flex flex-col justify-between cursor-pointer space-y-3 text-sm rounded-xl max-w-[26rem] h-fit w-full p-4 bg-white border-l-[0.3rem] border-l-[#FC9D68]">
           <header class="flex items-center justify-between font-bold">
-            <span class="uppercase text-xs text-[#401E79]">{{ raffle.id }}</span>
+            <span class="uppercase text-xs text-[#401E79]">{{ raffle._count.Participant || 0 }}</span>
             <span class="text-xs text-[#401E79]">
               {{ formatDate(raffle.initialDate) }} - {{ formatDate(raffle.finalDate) }}
             </span>
