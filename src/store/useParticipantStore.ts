@@ -3,7 +3,8 @@ import { defineStore } from 'pinia';
 import {
   ParticipantList,
   ParticipantRegisterDto,
-} from 'src/interfaces/participant.interface';
+  WinnerList,
+} from '../interfaces/participant.interface';
 
 const initialData = {
   participantRegisterDto: {
@@ -14,6 +15,7 @@ const initialData = {
 
 export const useParticipantStore = defineStore('ParticipantStore', () => {
   const participantList = ref<ParticipantList[]>([]);
+  const winnerList = ref<WinnerList[]>([]);
   const participantRegisterDto = ref<ParticipantRegisterDto>(
     structuredClone(initialData.participantRegisterDto)
   );
@@ -28,6 +30,7 @@ export const useParticipantStore = defineStore('ParticipantStore', () => {
     // state
     participantList,
     participantRegisterDto,
+    winnerList,
 
     // getters
 

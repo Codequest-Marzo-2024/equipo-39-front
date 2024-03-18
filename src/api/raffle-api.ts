@@ -31,8 +31,10 @@ export const getRaffleByUUID = async (uuid: string) => {
   return response.data;
 };
 
-export const drawRaffle = async (raffleId: number, winnerId: number) => {
-  const response = await api.get<any>(`/raffles/${raffleId}/draw/${winnerId}`);
+export const drawRaffle = async (raffleId: number, quantityWinners: number) => {
+  const response = await api.get<any>(
+    `/raffles/${raffleId}/draw/${quantityWinners}`
+  );
   return response.data;
 };
 

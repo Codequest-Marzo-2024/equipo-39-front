@@ -1,6 +1,7 @@
 import { storeToRefs } from 'pinia';
 import { getParticipants, registerParticipant } from '../api/participants-api';
 import { useParticipantStore } from '../store/useParticipantStore';
+import { computed } from 'vue';
 
 const useParticipants = () => {
   const participantStore = useParticipantStore();
@@ -28,7 +29,11 @@ const useParticipants = () => {
     // state
     participantList,
     participantRegisterDto,
+
     // getters
+    participantsName: computed(() => {
+      return participantList.value.map((participant) => participant.username);
+    }),
 
     // actions
     findParticipantsByRaffle,
