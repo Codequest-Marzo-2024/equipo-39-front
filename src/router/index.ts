@@ -41,7 +41,7 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
-    path: '/registerView',
+    path: '/raffle/:raffleId/register',
     name: 'registerView',
     component: () => import('../views/RegisterView.vue'),
   },

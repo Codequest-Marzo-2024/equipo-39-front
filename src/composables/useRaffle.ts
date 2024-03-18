@@ -1,6 +1,6 @@
 import { storeToRefs } from 'pinia';
 
-import { getRaffle, getRaffles } from '../api/raffle-api';
+import { createRaffle, getRaffle, getRaffles, updateRaffle } from '../api/raffle-api';
 import { useRaffleStore } from '../store/useRaffleStore';
 import {
   RaffleCreateDto,
@@ -30,19 +30,18 @@ const useRaffle = () => {
     }
   };
 
-  const createRaffle = async (body: RaffleCreateDto) => {
+  const create = async (body: RaffleCreateDto) => {
     try {
       await createRaffle(body);
-      findRaffles();
     } catch (error) {
       console.error(error);
+      throw new Error('Error creating raffle');
     }
   };
 
-  const updateRaffle = async (body: RaffleUpdateDto) => {
+  const update = async (body: RaffleUpdateDto) => {
     try {
       await updateRaffle(body);
-      findRaffles();
     } catch (error) {
       console.error(error);
     }
@@ -61,8 +60,9 @@ const useRaffle = () => {
     // actions
     findRaffles,
     findOneRaffle,
-    createRaffle,
-    updateRaffle,
+    create,
+    update,
+    resetRaffleCreateDto: raffleStore.resetRaffleCreateDto,
   };
 };
 

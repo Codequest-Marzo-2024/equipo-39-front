@@ -7,20 +7,19 @@
     </section>
     <main class="flex items-start justify-center">
         <section class="p-10 w-full max-w-md mb-12 z-50">
-            <form class="z-40 " action="#">
-                <myinput :type="'text'" :label="'Nombre'" v-model="bodyCreate.userName" />
+            <form class="z-40 " @submit.prevent="onSubmit()">
+                <myinput :type="'text'" :label="'Nombre'" v-model="raffleCreateDto.name" />
                 <textarea placeholder="Descripcion"
                     class="block border-2 my-5 p-1 resize-none border-[#FC9D68] bg-[#2F096E] text-white rounded-md w-full focus:outline-none focus:border-[#FC9D68]"
-                    rows="5">
+                    rows="5" v-model="raffleCreateDto.description">
                 </textarea>
                 <div class="inline-flex w-full gap-3">
-                    <myinput :type="'date'" :label="'Fecha inicio'" v-model="bodyCreate.userName" />
-                    <myinput :type="'date'" :label="'Fecha fin'" v-model="bodyCreate.userName" />
+                    <myinput :type="'date'" :label="'Fecha inicio'" v-model="raffleCreateDto.initialDate" />
+                    <myinput :type="'date'" :label="'Fecha fin'" v-model="raffleCreateDto.finalDate" />
                 </div>
-                <myinput :type="'number'" :label="'Maximo de participantes (opcional)'" v-model="bodyCreate.userName" />
-                <router-link class="w-full flex justify-center" to="/">
-                    <myButton text="Crear Sorteo" />
-                </router-link>
+                <div class="w-full flex justify-center">
+                    <myButton text="Crear Sorteo" :type="'submit'" />
+                </div>
             </form>
         </section>
         <div class="absolute bottom-5 right-5 z-10">
@@ -32,13 +31,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useRouter } from 'vue-router';
+
 import myButton from '../components/button.vue'
 import myinput from '../components/input.vue';
 import myHeader from '../components/header.vue'
+import useRaffle from '../composables/useRaffle';
 
-const bodyCreate = ref({
-    userName: "",
-    password: ""
-});
+const router = useRouter();
+const { create, raffleCreateDto, resetRaffleCreateDto } = useRaffle();
+
+const onSubmit = () => {
+    create(raffleCreateDto.value).then(() => {
+        resetRaffleCreateDto();
+        router.push({ name: 'homeView' });
+    }).catch((error) => {
+        console.log(error);
+    });
+}
+
+
 </script>
