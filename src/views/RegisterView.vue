@@ -146,8 +146,11 @@ if (!raffleUUID) {
 }
 
 const { raffletShort, findRaffleByUUID } = useRaffle();
-const { participantRegisterDto, registerParticipantInRaffle } =
-  useParticipants();
+const {
+  participantRegisterDto,
+  registerParticipantInRaffle,
+  resetParticipantRegisterDto,
+} = useParticipants();
 
 let isShowFormIndex = ref(0);
 
@@ -155,6 +158,7 @@ const onSubmit = () => {
   registerParticipantInRaffle(raffleUUID)
     .then(() => {
       isShowFormIndex.value = 1;
+      resetParticipantRegisterDto();
     })
     .catch((error) => {
       if (

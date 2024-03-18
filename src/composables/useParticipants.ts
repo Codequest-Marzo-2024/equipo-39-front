@@ -40,6 +40,7 @@ const useParticipants = () => {
     // actions
     findParticipantsByRaffle,
     registerParticipantInRaffle,
+    resetParticipantRegisterDto: participantStore.resetParticipantRegisterDto,
   };
 };
 
